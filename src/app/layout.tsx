@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "Spend Tracker",
   },
+  icons: {
+    apple: "/icon.png",
+  },
 };
 
 export const viewport: Viewport = {
