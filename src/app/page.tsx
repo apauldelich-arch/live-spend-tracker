@@ -111,6 +111,9 @@ export default function Home() {
     return acc;
   }, {} as Record<string, number>);
 
+  const uniqueVendorsForSuggestions = Array.from(new Set(expenses.map(e => e.vendor))).sort();
+  const uniqueCategoriesForSuggestions = Array.from(new Set(expenses.map(e => e.category))).sort();
+
   const [deletingExpenseId, setDeletingExpenseId] = useState<string | null>(null);
 
   // Auto-hide Undo Toast
@@ -362,14 +365,25 @@ export default function Home() {
             <h2>{editingExpenseId ? 'Edit' : 'Add'} Expense</h2>
             <form onSubmit={handleCreateOrUpdateExpense}>
               <div className={styles.inputGroup}><label>Amount</label><input required autoFocus type="number" step="0.01" value={expenseAmount} onChange={e => setExpenseAmount(e.target.value)} /></div>
-              <div className={styles.inputGroup}><label>Vendor / Supplier</label><input required type="text" placeholder="e.g. Ryanair, Starbucks" value={expenseVendor} onChange={e => setExpenseVendor(e.target.value)} /></div>
-              <div className={styles.inputGroup}><label>Category</label><input required type="text" placeholder="e.g. Flight, Food" value={expenseCategory} onChange={e => setExpenseCategory(e.target.value)} /></div>
+              <div className={styles.inputGroup}><label>Vendor / Supplier</label><input list="vendor-suggestions" required type="text" placeholder="e.g. Ryanair, Starbucks" value={expenseVendor} onChange={e => setExpenseVendor(e.target.value)} /></div>
+              <div className={styles.inputGroup}><label>Category</label><input list="category-suggestions" required type="text" placeholder="e.g. Flight, Food" value={expenseCategory} onChange={e => setExpenseCategory(e.target.value)} /></div>
               <div className={styles.inputGroup}><label>Note</label><input required type="text" placeholder="e.g. Return flight" value={expenseNote} onChange={e => setExpenseNote(e.target.value)} /></div>
-              <div className={styles.modalActions}><button type="button" onClick={() => { setIsAddingExpense(false); setEditingExpenseId(null); }} className={styles.cancelBtn}>Cancel</button><button type="submit" className="btn-primary">{editingExpenseId ? 'Update' : 'Add'}</button></div>
+              <div className={styles.modalActions}>
+                <button type="button" onClick={() => { setIsAddingExpense(false); setEditingExpenseId(null); }} className={styles.cancelBtn}>Cancel</button>
+                <button type="submit" className="btn-primary">{editingExpenseId ? 'Update' : 'Add'}</button>
+              </div>
             </form>
           </div>
         </div>
       )}
+
+      {/* Datalists for Suggestions */}
+      <datalist id="vendor-suggestions">
+        {uniqueVendorsForSuggestions.map(v => <option key={v} value={v} />)}
+      </datalist>
+      <datalist id="category-suggestions">
+        {uniqueCategoriesForSuggestions.map(c => <option key={c} value={c} />)}
+      </datalist>
     </main>
   );
 }

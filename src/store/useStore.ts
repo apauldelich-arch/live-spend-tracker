@@ -93,13 +93,22 @@ export const useStore = create<AppState>()(
           ...expense,
           id: crypto.randomUUID(),
           timestamp: Date.now(),
+          vendor: expense.vendor.trim(),
+          category: expense.category.trim().toUpperCase(),
+          note: expense.note.trim()
         };
         set((state) => ({ expenses: [newExpense, ...state.expenses] }));
       },
 
       updateExpense: (id, updates) => {
         set((state) => ({
-          expenses: state.expenses.map((e) => (e.id === id ? { ...e, ...updates } : e)),
+          expenses: state.expenses.map((e) => (e.id === id ? { 
+            ...e, 
+            ...updates,
+            vendor: updates.vendor ? updates.vendor.trim() : e.vendor,
+            category: updates.category ? updates.category.trim().toUpperCase() : e.category,
+            note: updates.note !== undefined ? (updates.note || '').trim() : e.note
+          } : e)),
         }));
       },
 
