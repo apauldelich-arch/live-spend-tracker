@@ -285,21 +285,6 @@ export default function Home() {
               <p className={styles.subtitle}>Welcome back, here&apos;s your overview</p>
             </header>
 
-            <div className={styles.tabs}>
-              <button 
-                className={view === 'active' ? `${styles.tab} ${styles.activeTab} ${styles.activeTabGreen}` : styles.tab} 
-                onClick={() => setView('active')}
-              >
-                Active
-              </button>
-              <button 
-                className={view === 'archive' ? `${styles.tab} ${styles.activeTab} ${styles.activeTabRed}` : styles.tab} 
-                onClick={() => setView('archive')}
-              >
-                Archive
-              </button>
-            </div>
-
             <div className={styles.grid}>
               {filteredSessions.length === 0 ? (
                 <div className="glass glass-card" style={{ textAlign: 'center', padding: '3rem 1rem' }}><p style={{ color: 'var(--text-muted)' }}>No {view} sessions.</p></div>
