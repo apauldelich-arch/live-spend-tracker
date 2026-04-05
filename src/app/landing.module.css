@@ -1,0 +1,138 @@
+.landingBody {
+  background-color: var(--background);
+  color: white;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  font-family: var(--font-outfit), sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.heroContent {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.heroHeading {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  max-width: 900px;
+}
+
+.heroSub {
+  font-size: clamp(1.125rem, 3vw, 1.375rem);
+  color: var(--text-muted);
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primaryBtn {
+  background: var(--primary);
+  color: #001a14;
+  padding: 1.25rem 2.5rem;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 40px rgba(0, 245, 171, 0.4);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 245, 171, 0.5);
+}
+
+.heroVisual {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+  border: 1px solid var(--border-light);
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 6rem 0;
+}
+
+.featureCard {
+  padding: 2.5rem;
+  border-radius: 32px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background 0.3s;
+}
+
+.featureCard:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.featureIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.featureCard p {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .landingBody {
+    padding: 1.5rem 1rem;
+  }
+}
