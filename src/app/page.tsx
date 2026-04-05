@@ -29,6 +29,7 @@ export default function Home() {
   const [expenseVendor, setExpenseVendor] = useState('');
   const [expenseCategory, setExpenseCategory] = useState('');
   const [expenseNote, setExpenseNote] = useState('');
+  const [expenseDate, setExpenseDate] = useState(new Date().toISOString().split('T')[0]);
 
   // Hydration fix
   useEffect(() => {
@@ -49,6 +50,7 @@ export default function Home() {
     setExpenseVendor(expense?.vendor || '');
     setExpenseCategory(expense?.category || '');
     setExpenseNote(expense?.note || '');
+    setExpenseDate(expense?.date || new Date().toISOString().split('T')[0]);
   };
 
   const handleCreateOrUpdateSession = (e: React.FormEvent) => {
@@ -79,6 +81,7 @@ export default function Home() {
       vendor: expenseVendor,
       category: expenseCategory,
       note: expenseNote,
+      date: expenseDate,
     };
     if (editingExpenseId) {
       updateExpense(editingExpenseId, data);
@@ -100,7 +103,10 @@ export default function Home() {
   );
 
   const currentViewingSession = sessions.find(s => s.id === viewingSessionId);
-  const currentExpenses = expenses.filter(e => e.sessionId === viewingSessionId);
+  const currentExpenses = expenses
+    .filter(e => e.sessionId === viewingSessionId)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime() || b.timestamp - a.timestamp);
+  
   const searchedExpenses = currentExpenses.filter(e => 
     e.vendor.toLowerCase().includes(vendorSearch.toLowerCase())
   );
@@ -234,6 +240,7 @@ export default function Home() {
                       <div className={styles.expenseInfo}>
                         <strong>{e.vendor}</strong>
                         <div className={styles.expenseSub}>
+                          <span className={styles.dateTag}>{new Date(e.date + 'T00:00:00').toLocaleDateString(undefined, { day: '2-digit', month: 'short' })}</span>
                           <span className={styles.categoryTag}>{e.category}</span>
                           <span className={styles.noteText}>{e.note}</span>
                         </div>
@@ -365,6 +372,7 @@ export default function Home() {
             <h2>{editingExpenseId ? 'Edit' : 'Add'} Expense</h2>
             <form onSubmit={handleCreateOrUpdateExpense}>
               <div className={styles.inputGroup}><label>Amount</label><input required autoFocus type="number" step="0.01" value={expenseAmount} onChange={e => setExpenseAmount(e.target.value)} /></div>
+              <div className={styles.inputGroup}><label>Date</label><input required type="date" value={expenseDate} onChange={e => setExpenseDate(e.target.value)} /></div>
               <div className={styles.inputGroup}><label>Vendor / Supplier</label><input list="vendor-suggestions" required type="text" placeholder="e.g. Ryanair, Starbucks" value={expenseVendor} onChange={e => setExpenseVendor(e.target.value)} /></div>
               <div className={styles.inputGroup}><label>Category</label><input list="category-suggestions" required type="text" placeholder="e.g. Flight, Food" value={expenseCategory} onChange={e => setExpenseCategory(e.target.value)} /></div>
               <div className={styles.inputGroup}><label>Note</label><input required type="text" placeholder="e.g. Return flight" value={expenseNote} onChange={e => setExpenseNote(e.target.value)} /></div>

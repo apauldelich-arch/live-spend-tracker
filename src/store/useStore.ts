@@ -22,6 +22,7 @@ export interface Expense {
   category: string;
   vendor: string;
   note: string;
+  date: string; // ISO date string YYYY-MM-DD
   timestamp: number;
 }
 

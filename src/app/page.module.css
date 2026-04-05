@@ -327,6 +327,14 @@
   border: 1px solid var(--border-light);
 }
 
+.dateTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5rem;
+}
+
 .noteText {
   font-size: 0.8125rem;
   color: var(--text-tertiary);
