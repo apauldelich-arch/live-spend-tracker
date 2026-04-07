@@ -9,18 +9,17 @@ export function WelcomeView({ onStart }: { onStart: () => void }) {
     <div className={styles.landingBody}>
       {/* HERO SECTION */}
       <header className={styles.heroContent}>
-        <div className={styles.badge}>Travel & Project Edition</div>
+        <div className={styles.badge}>Real-Time Budget Tracker</div>
         <h1 className={styles.heroHeading}>
-          Master Your Project's <span style={{ color: 'var(--primary)' }}>Burn Rate</span>.
+          Control Your Spending in <span style={{ color: 'var(--primary)' }}>Real-Time</span>.
         </h1>
         <p className={styles.heroSub}>
-          The perfect companion for trips, renovations, and big-ticket life events. 
-          Track specific budgets in real-time, 100% privately.
+          Stop the end-of-month blind spot. Track specific 'spending baskets' as they happen, 100% privately.
         </p>
         
         <div className={styles.heroActions}>
           <button onClick={onStart} className={styles.primaryBtn}>
-            Start New Project
+            Start New Tracker
           </button>
         </div>
 
@@ -44,16 +43,16 @@ export function WelcomeView({ onStart }: { onStart: () => void }) {
         </div>
         <div className={styles.painsGrid}>
           <div className={styles.painCard}>
-            <h4>Spreadsheet Fatigue</h4>
-            <p>Manual entry on a phone is a nightmare. You end up waiting until you're home to log, or worse—forgetting entirely.</p>
+            <h4>The Mid-Month Blind Spot</h4>
+            <p>Realizing you've burned your 'fun money' budget by the 14th because you weren't tracking it live is a common trap.</p>
           </div>
           <div className={styles.painCard}>
-            <h4>The "Post-Trip" Shock</h4>
-            <p>Realizing you've overspent 40% of your budget only after the holiday/renovation is finished is too late.</p>
+            <h4>The "Manual" Friction</h4>
+            <p>If logging an expense takes more than 3 seconds, you won't do it. Most apps fail the "standing-in-line" test.</p>
           </div>
           <div className={styles.painCard}>
-            <h4>Unknown Burn Rate</h4>
-            <p>Banking apps show you *what* you spent, but not if you're on track for a specific project duration.</p>
+            <h4>Disconnected Totals</h4>
+            <p>Banking apps show you *what* you spent, but not how it affects your specific goals for the week or month.</p>
           </div>
         </div>
       </section>
@@ -89,19 +88,19 @@ export function WelcomeView({ onStart }: { onStart: () => void }) {
       {/* FEATURES GRID */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2>Engineered for High-Stakes Spent</h2>
-          <p>Simple tools for complex life events.</p>
+          <h2>Engineered for Financial Pulse</h2>
+          <p>Simple tools for disciplined spending.</p>
         </div>
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🏔️</div>
-            <h3>Trip Optimized</h3>
-            <p>Perfect for gap years, honeymoons, or weekenders. Track daily burn rate so you never run out of "fun-money" early.</p>
+            <div className={styles.featureIcon}>📈</div>
+            <h3>Budget Pulse</h3>
+            <p>Designed for high-frequency tracking (groceries, nights out, daily limits) where speed is everything.</p>
           </div>
           <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🛠️</div>
-            <h3>Renovation Ready</h3>
-            <p>Manage contractors, materials, and unexpected costs in one place, separate from your main bank account.</p>
+            <div className={styles.featureIcon}>🎯</div>
+            <h3>Project Agnostic</h3>
+            <p>Use it for anything from a £50 night out to a £5,000 personal project, separate from your main account.</p>
           </div>
           <div className={styles.featureCard}>
             <div className={styles.featureIcon}>🛡️</div>
@@ -110,6 +109,7 @@ export function WelcomeView({ onStart }: { onStart: () => void }) {
           </div>
         </div>
       </section>
+
 
       {/* QUALIFIERS SECTION */}
       <section className={`${styles.section} ${styles.painsSection}`}>

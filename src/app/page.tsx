@@ -306,8 +306,8 @@ export default function Home() {
           (viewMode === 'active' || viewMode === 'archive') && !viewingSessionId && (
             <div className={styles.dashboardContainer}>
               <header className={styles.header}>
-                <h1 className={styles.title}>{viewMode === 'active' ? 'Active Projects' : 'Archive'}</h1>
-                <p className={styles.subtitle}>{viewMode === 'active' ? 'Manage your ongoing trip budgets and project burn rates.' : 'Historical records of your past events.'}</p>
+                <h1 className={styles.title}>{viewMode === 'active' ? 'Active Trackers' : 'Archive'}</h1>
+                <p className={styles.subtitle}>{viewMode === 'active' ? 'Manage your ongoing budget sessions and spending pulse.' : 'Historical records of your past trackers.'}</p>
               </header>
 
               <div className={styles.grid}>
@@ -356,7 +356,7 @@ export default function Home() {
           className={viewMode === 'active' ? `${styles.mobileNavItem} ${styles.mobileNavActive}` : styles.mobileNavItem}
           onClick={() => { setViewMode('active'); setViewingSessionId(null); }}
         >
-          <span className={styles.mobileIcon}>✈️</span>
+          <span className={styles.mobileIcon}>💷</span>
           <span className={styles.mobileLabel}>Active</span>
         </button>
         <button 
@@ -389,7 +389,7 @@ export default function Home() {
           <div className="glass glass-card" style={{ width: '90%', maxWidth: '400px' }}>
             <h2>{isEditingSession ? 'Edit' : 'Create'} Tracker</h2>
             <form onSubmit={handleCreateOrUpdateSession}>
-              <div className={styles.inputGroup}><label>Project Name</label><input required type="text" value={newName} onChange={e => setNewName(e.target.value)} placeholder="e.g. Italy Trip" /></div>
+              <div className={styles.inputGroup}><label>Tracker Name</label><input required type="text" value={newName} onChange={e => setNewName(e.target.value)} placeholder="e.g. Weekly Groceries" /></div>
               <div className={styles.inputGroup}><label>Mode</label><select value={newType} onChange={e => setNewType(e.target.value as 'budget' | 'tracking')}><option value="budget">Hard Budget</option><option value="tracking">Just Tracking</option></select></div>
               {newType === 'budget' && (<div className={styles.inputGroup}><label>Total Budget</label><input required type="number" step="0.01" value={newBudget} onChange={e => setNewBudget(e.target.value)} /></div>)}
               <div className={styles.inputGroup}><label>Currency</label><select value={newCurrency} onChange={e => setNewCurrency(e.target.value as Currency)}><option value="£">GBP (£)</option><option value="€">EUR (€)</option><option value="$">USD ($)</option><option value="ARS">ARS ($)</option></select></div>
@@ -406,8 +406,8 @@ export default function Home() {
             <form onSubmit={handleCreateOrUpdateExpense}>
               <div className={styles.inputGroup}><label>Amount</label><input required autoFocus type="number" step="0.01" value={expenseAmount} onChange={e => setExpenseAmount(e.target.value)} /></div>
               <div className={styles.inputGroup}><label>Date</label><input required type="date" value={expenseDate} onChange={e => setExpenseDate(e.target.value)} /></div>
-              <div className={styles.inputGroup}><label>Vendor</label><input list="vendor-suggestions" required type="text" placeholder="e.g. Ryanair" value={expenseVendor} onChange={e => setExpenseVendor(e.target.value)} /></div>
-              <div className={styles.inputGroup}><label>Category</label><input list="category-suggestions" required type="text" placeholder="e.g. FLIGHTS" value={expenseCategory} onChange={e => setExpenseCategory(e.target.value)} /></div>
+              <div className={styles.inputGroup}><label>Vendor</label><input list="vendor-suggestions" required type="text" placeholder="e.g. Supermarket" value={expenseVendor} onChange={e => setExpenseVendor(e.target.value)} /></div>
+              <div className={styles.inputGroup}><label>Category</label><input list="category-suggestions" required type="text" placeholder="e.g. GROCERIES" value={expenseCategory} onChange={e => setExpenseCategory(e.target.value)} /></div>
               <div className={styles.inputGroup}><label>Note</label><input type="text" placeholder="Optional details..." value={expenseNote} onChange={e => setExpenseNote(e.target.value)} /></div>
               <div className={styles.modalActions}>
                 <button type="button" onClick={() => { setIsAddingExpense(false); setEditingExpenseId(null); resetExpenseForm(); }} className={styles.cancelBtn}>Cancel</button>

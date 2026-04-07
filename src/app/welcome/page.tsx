@@ -9,13 +9,12 @@ export default function Welcome() {
   return (
     <div className={styles.landingBody}>
       <header className={styles.heroContent}>
-        <div className={styles.badge}>Beta Access</div>
+        <div className={styles.badge}>Real-Time Budget Tracker</div>
         <h1 className={styles.heroHeading}>
-          Master Your Project's <span style={{ color: 'var(--primary)' }}>Burn Rate</span>.
+          Control Your Spending in <span style={{ color: 'var(--primary)' }}>Real-Time</span>.
         </h1>
         <p className={styles.heroSub}>
-          The perfect companion for trips, renovations, and big-ticket life events. 
-          Track specific budgets in real-time, 100% privately on your device.
+          Stop the end-of-month blind spot. Track specific 'spending baskets' as they happen, 100% privately on your device.
         </p>
         
         <div className={styles.heroActions}>
@@ -37,15 +36,15 @@ export default function Welcome() {
 
       <section className={styles.featuresGrid}>
         <div className={styles.featureCard}>
-          <div className={styles.featureIcon}>🏔️</div>
-          <h3>Trip Optimized</h3>
-          <p>Whether it’s a weekend in Rome or a month in Bali, track your daily burn rate so you never run out of fun-money.</p>
+          <div className={styles.featureIcon}>📈</div>
+          <h3>Budget Pulse</h3>
+          <p>Designed for high-frequency tracking (groceries, nights out, daily limits) where speed is everything.</p>
         </div>
 
         <div className={styles.featureCard}>
-          <div className={styles.featureIcon}>🛠️</div>
-          <h3>Project Ready</h3>
-          <p>Home renovations, car builds, or side projects. Segregate your spending from your daily life accounts.</p>
+          <div className={styles.featureIcon}>🎯</div>
+          <h3>Project Agnostic</h3>
+          <p>Use it for anything from a £50 night out to a £5,000 personal project, separate from your main account.</p>
         </div>
 
         <div className={styles.featureCard}>
